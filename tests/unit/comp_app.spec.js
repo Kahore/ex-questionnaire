@@ -21,7 +21,7 @@ describe('PopupInvitation.vue', () => {
     })
     let restoreNeverShow = jest.fn()
     wrapper.setMethods({ restoreNeverShow })
-    wrapper.find('button').trigger('click')
+    wrapper.find('#restoreNeverShow').trigger('click')
     expect(restoreNeverShow).toBeCalled()
     wrapper.destroy()
   })
@@ -31,8 +31,20 @@ describe('PopupInvitation.vue', () => {
       localVue,
       attachToDocument: true
     })
-    wrapper.find('button').trigger('click')
+    wrapper.find('#restoreNeverShow').trigger('click')
     expect(actions.updateIsShowPopup).toBeCalled()
+    wrapper.destroy()
+  })
+  it('should rise restoreQuest on click', () => {
+    const wrapper = shallowMount(App, {
+      store,
+      localVue,
+      attachToDocument: true
+    })
+    let restoreQuest = jest.fn()
+    wrapper.setMethods({ restoreQuest })
+    wrapper.find('#restoreQuest').trigger('click')
+    expect(restoreQuest).toBeCalled()
     wrapper.destroy()
   })
 })

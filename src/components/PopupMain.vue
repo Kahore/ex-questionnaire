@@ -24,12 +24,12 @@
         :responses="quest.responses"/>
       </div>
     </div>
-    <button
+    <button class="modal-btn modal-btn_prev"
       v-if="questionnaireIndex > 0"
       @click="prev()">
       prev
     </button>
-    <button
+    <button class="modal-btn modal-btn_next"
       @click="next(quests)">
       next
     </button>

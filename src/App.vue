@@ -2,8 +2,12 @@
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <nav>Some logo here
-      <button @click="restoreNeverShow()">Reset popup</button>
-      <button @click="restoreQuest()">Reset questionnaire</button>
+      <button
+        id="restoreNeverShow" 
+        @click="restoreNeverShow()">Reset popup</button>
+      <button
+        id="restoreQuest"
+        @click="restoreQuest()">Reset questionnaire</button>
     </nav>
     <PopupInvitation v-if="isShow"/>
     <PopupMain/>
@@ -29,12 +33,9 @@ export default {
     },
     restoreQuest () {
       let quest = this.$store.getters.GET_QUESTIONNAIRE
-      console.log('TCL: restoreQuest -> quest', quest)
-
       localStorage.setItem('questionnaire', JSON.stringify(quest))
     },
     handler: function handler (event) {
-      console.log('TCL: beforeUnloadHandler -> e', event)
       let quest = this.$store.getters.GET_QUESTIONNAIRE
       localStorage.setItem('questionnaire', JSON.stringify(quest))
     }
