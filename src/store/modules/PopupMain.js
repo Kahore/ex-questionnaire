@@ -53,7 +53,6 @@ export default {
         return quest.questId === payload.questId
       })
       state.questionnaire[questIdx].responses = payload.responses
-      console.log('TCL: MUTATE_QUESTIONNAIRE_SINGLE -> state.questionnaire[questIdx].responses', state.questionnaire[questIdx].responses)
     },
     MUTATE_QUESTIONNAIRE (state, payload) {
       state.questionnaire = payload

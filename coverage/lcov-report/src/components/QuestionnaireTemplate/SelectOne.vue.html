@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/components/PopupInvitation.vue</title>
+    <title>Code coverage report for src/components/QuestionnaireTemplate/SelectOne.vue</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="..\..\prettify.css" />
-    <link rel="stylesheet" href="..\..\base.css" />
+    <link rel="stylesheet" href="..\..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\..\base.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(..\..\sort-arrow-sprite.png);
+            background-image: url(..\..\..\sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="..\..\index.html">All files</a> / <a href="index.html">src/components</a> PopupInvitation.vue
+      <a href="..\..\..\index.html">All files</a> / <a href="index.html">src/components/QuestionnaireTemplate</a> SelectOne.vue
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>1/1</span>
+        <span class='fraction'>0/10</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>0/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>1/1</span>
+        <span class='fraction'>0/10</span>
       </div>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -101,33 +101,7 @@
 56
 57
 58
-59
-60
-61
-62
-63
-64
-65</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+59</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -163,6 +137,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -172,68 +160,62 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
-  &lt;div class="new-questionnaire"&gt;
-    &lt;span&gt;Your opinion is important to us! Please click &lt;/span&gt;
-    &lt;span class="new-questionnaire_link"&gt;here&lt;/span&gt;
-    &lt;span&gt; to start questionnaire&lt;/span&gt;
-    &lt;span
-      class="new-questionnaire_close"
-      title="Never show this again"
-      @click="neverShow()"&gt;&lt;/span&gt;
+  &lt;div&gt;
+    &lt;h3&gt;{{ label }}&lt;/h3&gt;
+    &lt;div
+      v-for="(resp, id) in responses"
+      :key="id"&gt;
+      &lt;input
+        type="radio"
+        name="response"
+        :value="resp.text"
+        :checked="resp.isSelected"
+        :id=resp.id
+        @click="radioAction(resp.id)"&gt;
+      &lt;label :for=resp.id&gt;{{resp.text}}&lt;/label&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
 export default {
-  name: 'PopupInvitation',
   props: {
-    msg: String
+    label: {
+      type: String,
+      default: ''
+    },
+    responses: {
+      type: [String, Array],
+      default: ''
+    },
+    questId: {
+      type: String,
+      default: ''
+    }
   },
   methods: {
-    neverShow () {
-      this.$store.dispatch('updateIsShowPopup', false)
+    radioAction (respId) {
+<span class="cstat-no" title="statement not covered" >      let newResp = this._resetRadio(this.responses)</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      let questIdx = newResp.findIndex(function (resp) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return resp.id === respId</span>
+      })
+<span class="cstat-no" title="statement not covered" >      newResp[questIdx].isSelected = true</span>
+<span class="cstat-no" title="statement not covered" >      let obj = { 'questId': this.questId, 'responses': newResp }</span>
+<span class="cstat-no" title="statement not covered" >      this.$store.dispatch('MUTATE_QUESTIONNAIRE_SINGLE', obj)</span>
+    },
+    _resetRadio (arrResp) {
+<span class="cstat-no" title="statement not covered" >      let cloneResp = JSON.parse(JSON.stringify(arrResp))</span>
+<span class="cstat-no" title="statement not covered" >      for (let index = 0; index &lt; cloneResp.length; index++) {</span>
+<span class="cstat-no" title="statement not covered" >        cloneResp[index].isSelected = false</span>
+      }
+<span class="cstat-no" title="statement not covered" >      return cloneResp</span>
     }
   }
 }
 &lt;/script&gt;
 &nbsp;
-&lt;style scoped lang="scss"&gt;
-.new-questionnaire{
-  color: white;
-  padding: 0.3rem;
-  background-color: rgb(12, 170, 12);
-  &amp;_link {
-    &amp;:hover{
-      text-decoration: underline;
-      cursor: pointer;
-    }
-  }
-  &amp;_close{
-    position: fixed;
-    right: 32px;
-    width: 26px;
-    height: 26px;
-    opacity: 0.3;
-    &amp;:hover{
-      opacity: 1;
-      cursor: pointer;
-    }
-    &amp;::before, &amp;::after{
-      position: absolute;
-      left: 13px;
-      content: ' ';
-      height: 20px;
-      width: 2px;
-      background-color: white;
-    }
-    &amp;::before{
-      transform: rotate(45deg);
-    }
-    &amp;::after{
-      transform: rotate(-45deg);
-    }
-  }
-}
+&lt;style lang="scss" scoped&gt;
+&nbsp;
 &lt;/style&gt;
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -244,7 +226,7 @@ export default {
   generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Sep 03 2019 19:10:11 GMT+0700 (GMT+07:00)
 </div>
 </div>
-<script src="..\..\prettify.js"></script>
+<script src="..\..\..\prettify.js"></script>
 <script>
 window.onload = function () {
         if (typeof prettyPrint === 'function') {
@@ -252,6 +234,6 @@ window.onload = function () {
         }
 };
 </script>
-<script src="..\..\sorter.js"></script>
+<script src="..\..\..\sorter.js"></script>
 </body>
 </html>
