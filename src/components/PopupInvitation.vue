@@ -1,7 +1,8 @@
 <template>
   <div class="new-questionnaire">
-    <span>Your oppinion is important to us! Please, click </span>
+    <span>Your opinion is important to us! Please click </span>
     <span class="new-questionnaire_link">here</span>
+    <span> to start questionnaire</span>
     <span
       class="new-questionnaire_close"
       title="Never show this again"
