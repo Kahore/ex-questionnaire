@@ -3,14 +3,14 @@
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <nav>Some logo here
       <button
-        id="restoreNeverShow" 
+        id="restoreNeverShow"
         @click="restoreNeverShow()">Reset popup</button>
       <button
         id="restoreQuest"
         @click="restoreQuest()">Reset questionnaire</button>
     </nav>
     <PopupInvitation v-if="isShow"/>
-    <PopupMain/>
+    <PopupMain v-if="isShowModal"/>
   </div>
 </template>
 
@@ -43,6 +43,9 @@ export default {
   computed: {
     isShow () {
       return this.$store.getters.isShowPopup
+    },
+    isShowModal () {
+      return this.$store.getters.isShowModal
     }
   },
   mounted () {

@@ -8,17 +8,20 @@ beforeEach(() => {
   store = new Vuex.Store({
     state: {
       questionnaire: PopupMain.state.questionnaire,
-      questionnaireIndex: 0
+      questionnaireIndex: 0,
+      isShowModal: PopupMain.state.isShowModal
     },
     mutations: {
       MUTATE_QUESTIONNAIRE_INDEX: PopupMain.mutations.MUTATE_QUESTIONNAIRE_INDEX,
       MUTATE_QUESTIONNAIRE_SINGLE: PopupMain.mutations.MUTATE_QUESTIONNAIRE_SINGLE,
-      MUTATE_QUESTIONNAIRE: PopupMain.mutations.MUTATE_QUESTIONNAIRE
+      MUTATE_QUESTIONNAIRE: PopupMain.mutations.MUTATE_QUESTIONNAIRE,
+      MUTATE_MODAL_STATE: PopupMain.mutations.MUTATE_MODAL_STATE
     },
     actions: {
       MUTATE_QUESTIONNAIRE_INDEX: PopupMain.actions.MUTATE_QUESTIONNAIRE_INDEX,
       MUTATE_QUESTIONNAIRE_SINGLE: PopupMain.actions.MUTATE_QUESTIONNAIRE_SINGLE,
-      MUTATE_QUESTIONNAIRE: PopupMain.actions.MUTATE_QUESTIONNAIRE
+      MUTATE_QUESTIONNAIRE: PopupMain.actions.MUTATE_QUESTIONNAIRE,
+      MUTATE_MODAL_STATE: PopupMain.actions.MUTATE_MODAL_STATE
     }
   })
 })
@@ -40,6 +43,9 @@ describe('modules/PopupMain.js getters', () => {
   it('should return questionnaireIndex', () => {
     expect(PopupMain.getters.GET_QUESTIONNAIRE_INDEX(store.state)).toBe(store.state.questionnaireIndex)
   })
+  it('should return isShowModal', () => {
+    expect(PopupMain.getters.isShowModal(store.state)).toBe(store.state.isShowModal)
+  })
 })
 
 describe('modules/PopupMain.js mutations', () => {
@@ -54,6 +60,11 @@ describe('modules/PopupMain.js mutations', () => {
   it('should update questionnaire', () => {
     PopupMain.mutations.MUTATE_QUESTIONNAIRE(store.state, quest)
     expect(store.state.questionnaire).toBe(quest)
+  })
+  it('should invert isShowModal', () => {
+    PopupMain.mutations.MUTATE_MODAL_STATE(store.state)
+    // MEMO: isShowModal defalult value is false
+    expect(store.state.isShowModal).toBe(true)
   })
 })
 
@@ -72,5 +83,10 @@ describe('modules/PopupMain.js actions', () => {
     let commit = jest.fn()
     PopupMain.actions.MUTATE_QUESTIONNAIRE({ commit }, quest)
     expect(commit).toHaveBeenCalledWith('MUTATE_QUESTIONNAIRE', quest)
+  })
+  it('test MUTATE_MODAL_STATE using mock mutation, but real store', () => {
+    let commit = jest.fn()
+    PopupMain.actions.MUTATE_MODAL_STATE({ commit })
+    expect(commit).toHaveBeenCalledWith('MUTATE_MODAL_STATE')
   })
 })

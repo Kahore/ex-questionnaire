@@ -8,7 +8,8 @@ localVue.use(Vuex)
 describe('PopupInvitation.vue', () => {
   let store
   let actions = {
-    updateIsShowPopup: jest.fn()
+    updateIsShowPopup: jest.fn(),
+    MUTATE_MODAL_STATE: jest.fn()
   }
   beforeEach(() => {
     store = new Vuex.Store({ actions })
@@ -33,6 +34,28 @@ describe('PopupInvitation.vue', () => {
     })
     wrapper.find('.new-questionnaire_close').trigger('click')
     expect(actions.updateIsShowPopup).toBeCalled()
+    wrapper.destroy()
+  })
+  it('should rise showPopup on click', () => {
+    const wrapper = shallowMount(PopupInvitation, {
+      store,
+      localVue,
+      attachToDocument: true
+    })
+    let showPopup = jest.fn()
+    wrapper.setMethods({ showPopup })
+    wrapper.find('.new-questionnaire_link').trigger('click')
+    expect(showPopup).toBeCalled()
+    wrapper.destroy()
+  })
+  it('should rise MUTATE_MODAL_STATE action on click', () => {
+    const wrapper = shallowMount(PopupInvitation, {
+      store,
+      localVue,
+      attachToDocument: true
+    })
+    wrapper.find('.new-questionnaire_link').trigger('click')
+    expect(actions.MUTATE_MODAL_STATE).toBeCalled()
     wrapper.destroy()
   })
 })

@@ -34,7 +34,8 @@ export default {
         responses: ''
       }
     ],
-    questionnaireIndex: 0
+    questionnaireIndex: 0,
+    isShowModal: false
   },
   getters: {
     GET_QUESTIONNAIRE: state => {
@@ -42,6 +43,9 @@ export default {
     },
     GET_QUESTIONNAIRE_INDEX: state => {
       return state.questionnaireIndex
+    },
+    isShowModal: state => {
+      return state.isShowModal
     }
   },
   mutations: {
@@ -56,6 +60,9 @@ export default {
     },
     MUTATE_QUESTIONNAIRE (state, payload) {
       state.questionnaire = payload
+    },
+    MUTATE_MODAL_STATE (state) {
+      state.isShowModal = !state.isShowModal
     }
   },
   actions: {
@@ -68,6 +75,9 @@ export default {
     },
     MUTATE_QUESTIONNAIRE ({ commit }, payload) {
       commit('MUTATE_QUESTIONNAIRE', payload)
+    },
+    MUTATE_MODAL_STATE ({ commit }) {
+      commit('MUTATE_MODAL_STATE')
     }
   }
 }

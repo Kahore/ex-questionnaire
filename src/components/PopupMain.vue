@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="modal">
     <div v-for="(quest, index) in quests" :key="index">
       <div v-if="index === questionnaireIndex">
       <tpl-select-multi

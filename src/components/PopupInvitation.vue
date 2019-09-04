@@ -1,7 +1,7 @@
 <template>
   <div class="new-questionnaire">
     <span>Your opinion is important to us! Please click </span>
-    <span class="new-questionnaire_link">here</span>
+    <span class="new-questionnaire_link" @click="showPopup()">here</span>
     <span> to start questionnaire</span>
     <span
       class="new-questionnaire_close"
@@ -19,6 +19,9 @@ export default {
   methods: {
     neverShow () {
       this.$store.dispatch('updateIsShowPopup', false)
+    },
+    showPopup () {
+      this.$store.dispatch('MUTATE_MODAL_STATE')
     }
   }
 }
