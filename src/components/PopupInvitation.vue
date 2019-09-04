@@ -27,7 +27,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .new-questionnaire{
   color: white;
   padding: 0.3rem;

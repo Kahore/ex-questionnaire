@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>{{ label }}</h3>
-    <textarea name="" id="" cols="30" rows="10" v-model="responseVal"></textarea>
+    <textarea rows="10" v-model="responseVal"></textarea>
   </div>
 </template>
 
@@ -37,5 +37,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+textarea{
+  width: 80%;
+}
 </style>

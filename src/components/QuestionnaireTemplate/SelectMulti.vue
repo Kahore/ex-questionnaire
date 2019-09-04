@@ -3,7 +3,8 @@
     <h3>{{ label }}</h3>
     <div
       v-for="(resp, id) in responses"
-      :key="id">
+      :key="id"
+      class="responses">
       <input
         type="checkbox"
         :checked="resp.isSelected"
@@ -45,5 +46,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.responses {
+  text-align: left;
+  margin-left: 15%
+}
 </style>
