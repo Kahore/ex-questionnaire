@@ -4,10 +4,13 @@
     <nav>Some logo here
       <button
         id="restoreNeverShow"
-        @click="restoreNeverShow()">Reset popup</button>
+        @click="restoreNeverShow()"
+        title="Reset never show value">Reset popup</button>
       <button
         id="restoreQuest"
-        @click="restoreQuest()">Reset questionnaire</button>
+        @click="restoreQuest()"
+        title="Set default questionnaire"
+        >Reset questionnaire</button>
     </nav>
     <PopupInvitation v-if="isShow && !isComplete"/>
     <PopupMain v-if="isShowModal"/>
