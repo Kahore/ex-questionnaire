@@ -9,26 +9,19 @@ npm install
 ```
 npm run serve
 ```
+## Features
 
-### Compiles and minifies for production
-```
-npm run build
-```
+This project implements basic questionnaire:
+* Allow to user chouse display or not popup with questionnaire
+* Every question render as template base on type of questionnaire
+* Progress saved at localstorage, so user does't lose they progress in case when close modal/tabs
 
-### Run your tests
-```
-npm run test
-```
+## Technical details
 
-### Lints and fixes files
-```
-npm run lint
-```
+* VueJS: [^2.6.10],
+* Vuex: [^3.0.1],
+* localstorage as temp database
 
-### Run your unit tests
-```
-npm run test:unit
-```
+## Demo
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Checkout demo [here](https://ex-localstore.herokuapp.com/)
