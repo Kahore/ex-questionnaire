@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <nav>Some logo here
+    <nav> <span class="logo">Some logo here</span>
       <button
         id="restoreNeverShow"
         @click="restoreNeverShow()"
@@ -81,7 +81,10 @@ html{
   font-size: 12pt;
 }
 nav{
-  background-color: darken($color: rgba(146, 139, 139, 0.959), $amount: 5);
+  background-color: rgb(52, 58, 64);
   padding: 0.8rem;
+}
+.logo{
+  color: white;
 }
 </style>
