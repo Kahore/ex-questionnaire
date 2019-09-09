@@ -7,22 +7,23 @@
           v-for="(rating, index) in scores"
           :key="index"
           :class="{'is-selected': ((temp_value >= rating) && temp_value != null)}"
-          @click="set(rating)"
           @mouseover="starOver(rating)"
           @mouseout="starOut">
           <input
             class="star-rating star-rating__checkbox"
+            name="starRating"
             type="radio"
             :value="rating"
-            v-model="responses"/>★
+            @click="setRating(rating)"
+           />★
         </label>
-        </div>
-
+      </div>
   </div>
 
 </template>
 
 <script>
+import EventBus from '../../EventBus'
 export default {
   props: {
     label: {
@@ -62,11 +63,24 @@ export default {
     /*
      * Set the rating.
      */
-    set (value) {
-      this.temp_value = value
-      let obj = { 'questId': this.questId, 'responses': value }
-      this.$store.dispatch('MUTATE_QUESTIONNAIRE_SINGLE', obj)
-      return this.temp_value
+    setRating (value) {
+      if (typeof value !== 'undefined') {
+        let obj = { 'questId': this.questId, 'responses': value }
+        this.$store.dispatch('MUTATE_QUESTIONNAIRE_SINGLE', obj)
+        if (value !== 10) {
+          EventBus.$emit('POST_DATA')
+          this.$store.dispatch('MUTATE_QUESTIONNAIRE_DETAILS')
+          this.$store.dispatch('MUTATE_QUESTIONNAIRE_INDEX', 0)
+        } else {
+          EventBus.$emit('REDIRECT_QUESTIONNAIRE_INDEX_NEXT')
+        }
+        let hasScore = this.$store.getters.hasScore
+        if (!hasScore) {
+          localStorage.setItem('hasScore', true)
+          this.$store.dispatch('MUTATE_QUESTIONNAIRE_SCORE')
+        }
+      // return this.temp_value
+      }
     }
   },
   mounted () {

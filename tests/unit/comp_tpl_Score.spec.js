@@ -6,7 +6,10 @@ const localVue = createLocalVue()
 localVue.use(Vuex)
 let store
 let actions = {
-  MUTATE_QUESTIONNAIRE_SINGLE: jest.fn()
+  MUTATE_QUESTIONNAIRE_SINGLE: jest.fn(),
+  MUTATE_QUESTIONNAIRE_DETAILS: jest.fn(),
+  MUTATE_QUESTIONNAIRE_INDEX: jest.fn(),
+  MUTATE_QUESTIONNAIRE_SCORE: jest.fn()
 }
 beforeEach(() => {
   store = new Vuex.Store({ actions })
@@ -26,7 +29,7 @@ describe('TextOnly.vue', () => {
     })
     let set = jest.fn()
     wrapper.setMethods({ set })
-    wrapper.find('[type=\'radio\']').trigger('click')
+    wrapper.find('.star-rating__checkbox').trigger('click')
     expect(set).toBeCalled()
   })
   it('should rise MUTATE_QUESTIONNAIRE_SINGLE action on click', () => {

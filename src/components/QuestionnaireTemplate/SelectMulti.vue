@@ -48,6 +48,7 @@ export default {
 <style lang="scss" scoped>
 .responses {
   text-align: left;
-  margin-left: 15%
+  margin-left: 15%;
+  padding-top: 5px;
 }
 </style>

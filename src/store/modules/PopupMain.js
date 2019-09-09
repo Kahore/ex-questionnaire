@@ -1,41 +1,13 @@
+import questionMain from '../../data/questionnaire.json'
+import questionDetails from '../../data/questionnaireDetails.json'
 export default {
   state: {
-    questionnaire: [
-      {
-        type: 'select multi',
-        label: 'lorem 1',
-        questId: 'q1',
-        responses: [
-          { id: 1, text: 'aa1', isSelected: false },
-          { id: 2, text: 'aa2', isSelected: false },
-          { id: 3, text: 'aa3', isSelected: false }
-        ]
-      },
-      {
-        type: 'select one',
-        label: 'lorem 2',
-        questId: 'q2',
-        responses: [
-          { id: 4, text: 'bb1', isSelected: false },
-          { id: 5, text: 'bb2', isSelected: false },
-          { id: 6, text: 'bb3', isSelected: true }
-        ]
-      },
-      {
-        type: 'text only',
-        label: 'lorem 3',
-        questId: 'q3',
-        responses: ''
-      },
-      {
-        type: 'score',
-        label: 'lorem 4',
-        questId: 'q4',
-        responses: ''
-      }
-    ],
+    questionnaire: [],
+    questionnaireDetails: [],
     questionnaireIndex: 0,
-    isShowModal: false
+    isShowModal: false,
+    hasScore: false,
+    isComplete: false
   },
   getters: {
     GET_QUESTIONNAIRE: state => {
@@ -46,6 +18,12 @@ export default {
     },
     isShowModal: state => {
       return state.isShowModal
+    },
+    hasScore: state => {
+      return state.hasScore
+    },
+    isComplete: state => {
+      return state.isComplete
     }
   },
   mutations: {
@@ -53,16 +31,27 @@ export default {
       state.questionnaireIndex = payload
     },
     MUTATE_QUESTIONNAIRE_SINGLE (state, payload) {
-      let questIdx = state.questionnaire.findIndex(function (quest) {
-        return quest.questId === payload.questId
-      })
-      state.questionnaire[questIdx].responses = payload.responses
+      if (typeof payload !== 'undefined') {
+        let questIdx = state.questionnaire.findIndex(function (quest) {
+          return quest.questId === payload.questId
+        })
+        state.questionnaire[questIdx].responses = payload.responses
+      }
     },
     MUTATE_QUESTIONNAIRE (state, payload) {
       state.questionnaire = payload
     },
     MUTATE_MODAL_STATE (state) {
       state.isShowModal = !state.isShowModal
+    },
+    MUTATE_QUESTIONNAIRE_DETAILS (state, payload) {
+      state.questionnaire = payload
+    },
+    MUTATE_QUESTIONNAIRE_SCORE (state) {
+      state.hasScore = !state.hasScore
+    },
+    MUTATE_QUESTIONNAIRE_COMPLETE (state) {
+      state.isComplete = !state.isComplete
     }
   },
   actions: {
@@ -76,8 +65,23 @@ export default {
     MUTATE_QUESTIONNAIRE ({ commit }, payload) {
       commit('MUTATE_QUESTIONNAIRE', payload)
     },
+    RESET_QUESTIONNAIRE ({ commit }) {
+      let payload = questionMain
+      commit('MUTATE_QUESTIONNAIRE', payload)
+    },
     MUTATE_MODAL_STATE ({ commit }) {
       commit('MUTATE_MODAL_STATE')
+    },
+    MUTATE_QUESTIONNAIRE_DETAILS ({ commit }) {
+      let payload = questionDetails
+      commit('MUTATE_QUESTIONNAIRE_DETAILS', payload)
+    },
+    MUTATE_QUESTIONNAIRE_SCORE ({ commit }) {
+      commit('MUTATE_QUESTIONNAIRE_SCORE')
+    },
+    MUTATE_QUESTIONNAIRE_COMPLETE ({ commit }) {
+      localStorage.setItem('questionnaireComplete', true)
+      commit('MUTATE_QUESTIONNAIRE_COMPLETE')
     }
   }
 }

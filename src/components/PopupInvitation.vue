@@ -13,9 +13,6 @@
 <script>
 export default {
   name: 'PopupInvitation',
-  props: {
-    msg: String
-  },
   methods: {
     neverShow () {
       this.$store.dispatch('updateIsShowPopup', false)

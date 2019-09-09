@@ -9,7 +9,7 @@
         id="restoreQuest"
         @click="restoreQuest()">Reset questionnaire</button>
     </nav>
-    <PopupInvitation v-if="isShow"/>
+    <PopupInvitation v-if="isShow && !isComplete"/>
     <PopupMain v-if="isShowModal"/>
   </div>
 </template>
@@ -32,8 +32,11 @@ export default {
       this.$store.dispatch('updateIsShowPopup', true)
     },
     restoreQuest () {
+      this.$store.dispatch('RESET_QUESTIONNAIRE')
+      this.$store.dispatch('MUTATE_QUESTIONNAIRE_INDEX', 0)
       let quest = this.$store.getters.GET_QUESTIONNAIRE
       localStorage.setItem('questionnaire', JSON.stringify(quest))
+      localStorage.removeItem('questionnaireComplete')
     },
     handler: function handler (event) {
       let quest = this.$store.getters.GET_QUESTIONNAIRE
@@ -43,6 +46,9 @@ export default {
   computed: {
     isShow () {
       return this.$store.getters.isShowPopup
+    },
+    isComplete () {
+      return this.$store.getters.isComplete
     },
     isShowModal () {
       return this.$store.getters.isShowModal
@@ -54,6 +60,9 @@ export default {
     }
     if (localStorage.getItem('questionnaire')) {
       this.$store.dispatch('MUTATE_QUESTIONNAIRE', JSON.parse(localStorage.getItem('questionnaire')))
+    }
+    if (localStorage.getItem('questionnaireComplete')) {
+      this.$store.dispatch('MUTATE_QUESTIONNAIRE_COMPLETE')
     }
   },
   created () {

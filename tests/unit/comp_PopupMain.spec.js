@@ -5,12 +5,14 @@ import tplSelectmulti from '@/components/QuestionnaireTemplate/SelectMulti'
 import tplSelectOne from '@/components/QuestionnaireTemplate/SelectOne'
 import tplText from '@/components/QuestionnaireTemplate/TextOnly'
 import tplScore from '@/components/QuestionnaireTemplate/Score'
+import tplFinal from '@/components/QuestionnaireTemplate/Final'
 const localVue = createLocalVue()
 localVue.use(Vuex)
 localVue.use(tplSelectmulti)
 localVue.use(tplSelectOne)
 localVue.use(tplText)
 localVue.use(tplScore)
+localVue.use(tplFinal)
 let store
 let state
 let getters
@@ -19,7 +21,7 @@ let actions
 beforeEach(() => {
   getters = {
     GET_QUESTIONNAIRE_INDEX: () => 3
-  },
+  }
   actions = {
     MUTATE_QUESTIONNAIRE_INDEX: jest.fn()
   }
@@ -35,7 +37,7 @@ describe('PopupMain.vue', () => {
     })
     let next = jest.fn()
     wrapper.setMethods({ next })
-    wrapper.find('.modal-btn_next').trigger('click')
+    wrapper.find('.wrapper-btn_pos__next').trigger('click')
     expect(next).toBeCalled()
     wrapper.destroy()
   })
@@ -45,7 +47,7 @@ describe('PopupMain.vue', () => {
       localVue,
       attachToDocument: true
     })
-    wrapper.find('.modal-btn_next').trigger('click')
+    wrapper.find('.wrapper-btn_pos__next').trigger('click')
     expect(actions.MUTATE_QUESTIONNAIRE_INDEX).toBeCalled()
     wrapper.destroy()
   })
@@ -57,7 +59,7 @@ describe('PopupMain.vue', () => {
     })
     let prev = jest.fn()
     wrapper.setMethods({ prev })
-    wrapper.find('.modal-btn_prev').trigger('click')
+    wrapper.find('.wrapper-btn_pos__prev').trigger('click')
     expect(prev).toBeCalled()
     wrapper.destroy()
   })
@@ -67,7 +69,7 @@ describe('PopupMain.vue', () => {
       localVue,
       attachToDocument: true
     })
-    wrapper.find('.modal-btn_prev').trigger('click')
+    wrapper.find('.wrapper-btn_pos__prev').trigger('click')
     expect(actions.MUTATE_QUESTIONNAIRE_INDEX).toBeCalled()
     wrapper.destroy()
   })

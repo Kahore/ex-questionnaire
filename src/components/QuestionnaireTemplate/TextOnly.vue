@@ -39,5 +39,6 @@ export default {
 <style lang="scss" scoped>
 textarea{
   width: 80%;
+  outline: none;
 }
 </style>

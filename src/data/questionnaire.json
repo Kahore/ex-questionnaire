@@ -1,0 +1,39 @@
+[
+      {
+        "type": "select multi",
+        "label": "Lorem ipsum dolor sit amet?",
+        "questId": "q1",
+        "responses": [
+          { "id": 1, "text": "Elementum nisi quis eleifend quam adipiscing vitae", "isSelected": false },
+          { "id": 2, "text": "Mauris augue neque gravida in fermentum et sollicitudin ac", "isSelected": false },
+          { "id": 3, "text": "Massa tempor nec feugiat nisl", "isSelected": false }
+        ]
+      },
+      {
+        "type": "select one",
+        "label": "Vestibulum rhoncus est pellentesque elit ullamcorper?",
+        "questId": "q2",
+        "responses": [
+          { "id": 4, "text": "Semper risus in hendrerit gravida rutrum", "isSelected": false },
+          { "id": 5, "text": "Morbi blandit cursus risus at ultrices mi tempus", "isSelected": false },
+          { "id": 6, "text": "Nam at lectus urna duis convallis convallis tellus", "isSelected": false }
+        ]
+      },
+      {
+        "type": "text only",
+        "label": "Nullam vehicula ipsum a arcu cursus vitae?",
+        "questId": "q3",
+        "responses": ""
+      },
+      {
+        "type": "score",
+        "label": "Question 4",
+        "questId": "q4",
+        "responses": 0
+      },
+      {
+        "type": "final",
+        "label": "Thank you for your answering",
+        "questId": "q8"
+      }
+    ]
