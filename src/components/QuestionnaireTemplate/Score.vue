@@ -121,5 +121,11 @@ export default {
     @extend %visually-hidden;
   }
 }
-
+@media (max-width: 452px) {
+  .star-rating {
+    &__star {
+      font-size: 1.3em;
+    }
+  }
+}
 </style>

@@ -83,11 +83,19 @@ html{
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12pt;
 }
-nav{
+nav {
   background-color: rgb(52, 58, 64);
   padding: 0.8rem;
 }
 .logo{
   color: white;
+}
+@media (max-width: 452px) {
+  nav {
+    & > button{
+      display: grid;
+      margin-top: 5px;
+    }
+  }
 }
 </style>

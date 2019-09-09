@@ -227,8 +227,12 @@ export default {
   .wrapper{
     &-modal{
       width: 300px;
+      height: 400px;
       margin-top: 30%;
-    margin-left: 15%;
+      margin-left: 15%;
+      &_close{
+        left: 92%;
+      }
     }
     &-btn_pos__next {
       left: 89%;

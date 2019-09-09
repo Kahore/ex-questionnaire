@@ -1,12 +1,13 @@
 <template>
   <div class="new-questionnaire">
-    <span>Your opinion is important to us! Please click </span>
-    <span class="new-questionnaire_link" @click="showPopup()">here</span>
-    <span> to start questionnaire</span>
     <span
       class="new-questionnaire_close"
       title="Never show this again"
       @click="neverShow()"></span>
+    <span class="new-questionnaire_block">Your opinion is important to us!</span><span> Please click </span>
+    <span class="new-questionnaire_link" @click="showPopup()"><b>here</b></span>
+    <span> to start questionnaire</span>
+
   </div>
 </template>
 
@@ -58,6 +59,16 @@ export default {
     }
     &::after{
       transform: rotate(-45deg);
+    }
+  }
+}
+@media (max-width: 452px) {
+  .new-questionnaire{
+    &_block{
+      display: block;
+    }
+    &_close {
+      right: 11px;
     }
   }
 }
