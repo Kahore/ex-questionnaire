@@ -1,10 +1,12 @@
 <template>
   <div>
-    <h3>{{ label }}</h3>
-    <p v-if="hasScore">
-        We saved your progress! Thank you!<br>
+     <template v-if="hasScore">
+    <h3 class="wrapper-modal_content-header">{{ label }}</h3>
+    <p>
+        We saved your progress!<br>
         Now you can close this window
       </p>
+      </template>
       <template v-else>
         <p>To continue please set a score! It's important to us!</p>
       </template>

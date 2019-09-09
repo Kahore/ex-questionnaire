@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>{{ label }}</h3>
+    <h3 class="wrapper-modal_content-header">{{ label }}</h3>
     <textarea rows="10" v-model="responseVal"></textarea>
   </div>
 </template>

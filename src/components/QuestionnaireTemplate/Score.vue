@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>{{ label }}</h3>
+    <h3 class="wrapper-modal_content-header">{{ label }}</h3>
       <div class="star-rating">
         <label
           class="star-rating__star"

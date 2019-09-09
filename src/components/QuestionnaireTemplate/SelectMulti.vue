@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>{{ label }}</h3>
+    <h3 class="wrapper-modal_content-header">{{ label }}</h3>
     <div
       v-for="(resp, id) in responses"
       :key="id"
@@ -50,5 +50,10 @@ export default {
   text-align: left;
   margin-left: 15%;
   padding-top: 5px;
+}
+@media (max-width: 769px) {
+  .responses{
+    margin-right: 30px;
+  }
 }
 </style>

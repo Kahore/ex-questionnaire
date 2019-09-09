@@ -111,7 +111,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 %btn_pos{
     position: absolute;
     border: none;
@@ -194,4 +194,54 @@ export default {
   }
 }
 
+@media (max-width: 992px) {
+  .wrapper{
+    &-modal{
+      width: 560px;
+    }
+  }
+}
+@media (max-width: 769px) {
+  .wrapper{
+    &-modal{
+      width: 500px;
+      margin-top: 15%;
+      &_content{
+        &-header{
+          margin-top:30px;
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 576px) {
+  .wrapper{
+    &-modal{
+      width: 350px;
+    }
+  }
+}
+@media (max-width: 452px) {
+  .wrapper{
+    &-modal{
+      width: 300px;
+      margin-top: 30%;
+    margin-left: 15%;
+    }
+    &-btn_pos__next {
+      left: 89%;
+    }
+  }
+}
+@media (max-width: 376px) {
+  .wrapper{
+    &-modal{
+      width: 250px;
+      margin-top: 35%;
+      margin-left: 10%;
+    }
+  }
+}
 </style>
