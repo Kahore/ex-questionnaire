@@ -37,6 +37,7 @@ export default {
       let quest = this.$store.getters.GET_QUESTIONNAIRE
       localStorage.setItem('questionnaire', JSON.stringify(quest))
       localStorage.removeItem('questionnaireComplete')
+      localStorage.removeItem('hasScore')
     },
     handler: function handler (event) {
       let quest = this.$store.getters.GET_QUESTIONNAIRE

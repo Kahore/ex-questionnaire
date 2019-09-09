@@ -106,7 +106,7 @@ export default {
     })
     EventBus.$on('POST_DATA', payload => {
       this.postData(payload)
-    }) 
+    })
   }
 }
 </script>

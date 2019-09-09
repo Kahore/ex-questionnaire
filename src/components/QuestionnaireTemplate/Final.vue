@@ -28,7 +28,7 @@ export default {
   mounted () {
     let scr = this.$store.getters.hasScore
     if (scr) {
-     EventBus.$emit('POST_DATA', 'cpl')
+      EventBus.$emit('POST_DATA', 'cpl')
     }
   }
 }
