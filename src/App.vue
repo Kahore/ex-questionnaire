@@ -64,6 +64,9 @@ export default {
     }
     if (localStorage.getItem('questionnaire')) {
       this.$store.dispatch('MUTATE_QUESTIONNAIRE', JSON.parse(localStorage.getItem('questionnaire')))
+    } else {
+      let quest = this.$store.getters.GET_QUESTIONNAIRE
+      this.$store.dispatch('MUTATE_QUESTIONNAIRE', quest)
     }
     if (!localStorage.getItem('questionnaireIndex')) {
       this.$store.dispatch('MUTATE_QUESTIONNAIRE_INDEX', 0)
