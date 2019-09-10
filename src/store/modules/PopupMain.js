@@ -10,10 +10,10 @@ export default {
     isComplete: false
   },
   getters: {
-    GET_QUESTIONNAIRE: state => {
+    questionnaire: state => {
       return state.questionnaire
     },
-    GET_QUESTIONNAIRE_INDEX: state => {
+    questionnaireIndex: state => {
       return state.questionnaireIndex
     },
     isShowModal: state => {

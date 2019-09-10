@@ -12,20 +12,15 @@
         title="Set default questionnaire"
         >Reset questionnaire</button>
     </nav>
-    <PopupInvitation v-if="isShow && !isComplete"/>
+    <PopupInvitation v-if="isShowPopup && !isComplete"/>
     <PopupMain v-if="isShowModal"/>
   </div>
 </template>
 
 <script>
-
+import { mapGetters } from 'vuex'
 export default {
   name: 'app',
-  data () {
-    return {
-      isShowPopup: true
-    }
-  },
   components: {
     'PopupInvitation': () => import('./components/PopupInvitation.vue'),
     'PopupMain': () => import('./components/PopupMain.vue')
@@ -37,26 +32,18 @@ export default {
     restoreQuest () {
       this.$store.dispatch('RESET_QUESTIONNAIRE')
       this.$store.dispatch('MUTATE_QUESTIONNAIRE_INDEX', 0)
-      let quest = this.$store.getters.GET_QUESTIONNAIRE
+      let quest = this.$store.getters.questionnaire
       localStorage.setItem('questionnaire', JSON.stringify(quest))
       localStorage.removeItem('questionnaireComplete')
       localStorage.removeItem('hasScore')
     },
     handler: function handler (event) {
-      let quest = this.$store.getters.GET_QUESTIONNAIRE
+      let quest = this.$store.getters.questionnaire
       localStorage.setItem('questionnaire', JSON.stringify(quest))
     }
   },
   computed: {
-    isShow () {
-      return this.$store.getters.isShowPopup
-    },
-    isComplete () {
-      return this.$store.getters.isComplete
-    },
-    isShowModal () {
-      return this.$store.getters.isShowModal
-    }
+    ...mapGetters(['isShowPopup', 'isComplete', 'isShowModal'])
   },
   mounted () {
     if (localStorage.getItem('isShow') === 'false') {
@@ -65,7 +52,7 @@ export default {
     if (localStorage.getItem('questionnaire')) {
       this.$store.dispatch('MUTATE_QUESTIONNAIRE', JSON.parse(localStorage.getItem('questionnaire')))
     } else {
-      let quest = this.$store.getters.GET_QUESTIONNAIRE
+      let quest = this.$store.getters.questionnaire
       this.$store.dispatch('MUTATE_QUESTIONNAIRE', quest)
     }
     if (!localStorage.getItem('questionnaireIndex')) {

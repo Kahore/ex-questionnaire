@@ -38,10 +38,10 @@ const quest = [{
 let replaceResp = { 'questId': 'q3', 'responses': 'Some New Text by test' }
 describe('modules/PopupMain.js getters', () => {
   it('should return questionnaire', () => {
-    expect(PopupMain.getters.GET_QUESTIONNAIRE(store.state)).toBe(store.state.questionnaire)
+    expect(PopupMain.getters.questionnaire(store.state)).toBe(store.state.questionnaire)
   })
   it('should return questionnaireIndex', () => {
-    expect(PopupMain.getters.GET_QUESTIONNAIRE_INDEX(store.state)).toBe(store.state.questionnaireIndex)
+    expect(PopupMain.getters.questionnaireIndex(store.state)).toBe(store.state.questionnaireIndex)
   })
   it('should return isShowModal', () => {
     expect(PopupMain.getters.isShowModal(store.state)).toBe(store.state.isShowModal)

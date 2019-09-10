@@ -15,6 +15,7 @@
 
 <script>
 import EventBus from '../../EventBus'
+import { mapGetters } from 'vuex'
 export default {
   props: {
     label: {
@@ -23,9 +24,7 @@ export default {
     }
   },
   computed: {
-    hasScore () {
-      return this.$store.getters.hasScore
-    }
+    ...mapGetters(['hasScore'])
   },
   mounted () {
     let scr = this.$store.getters.hasScore

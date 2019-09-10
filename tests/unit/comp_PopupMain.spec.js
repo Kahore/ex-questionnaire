@@ -20,7 +20,7 @@ let actions
 
 beforeEach(() => {
   getters = {
-    GET_QUESTIONNAIRE_INDEX: () => 3
+    questionnaireIndex: () => 3
   }
   actions = {
     MUTATE_QUESTIONNAIRE_INDEX: jest.fn()

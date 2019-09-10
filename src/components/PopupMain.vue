@@ -7,12 +7,12 @@
       @click="closeModal()"
       ></span>
       <button class="modal-btn modal-btn_prev wrapper-btn_pos__prev"
-        v-if="questionnaireIndex > 0 && (questionnaireIndex <= quests.length-1)"
+        v-if="questionnaireIndex > 0 && (questionnaireIndex <= questionnaire.length-1)"
         @click="prev()">
         &#8249;
       </button>
       <div
-        v-for="(quest, index) in quests"
+        v-for="(quest, index) in questionnaire"
         :key="index"
         class="wrapper-modal_content"
        >
@@ -46,8 +46,8 @@
         </div>
       </div>
       <button class="modal-btn modal-btn_next wrapper-btn_pos__next"
-        v-if="questionnaireIndex < quests.length-1"
-        @click="next(quests)">
+        v-if="questionnaireIndex < questionnaire.length-1"
+        @click="next(questionnaire)">
         &#8250;
       </button>
     </section>
@@ -56,6 +56,7 @@
 
 <script>
 import EventBus from '../EventBus'
+import { mapGetters } from 'vuex'
 export default {
   name: 'PopupMain',
   components: {
@@ -66,12 +67,7 @@ export default {
     'tpl-final': () => import('./QuestionnaireTemplate/Final')
   },
   computed: {
-    quests () {
-      return this.$store.getters.GET_QUESTIONNAIRE
-    },
-    questionnaireIndex () {
-      return this.$store.getters.GET_QUESTIONNAIRE_INDEX
-    }
+    ...mapGetters(['questionnaire', 'questionnaireIndex'])
   },
   methods: {
     prev () {
@@ -87,7 +83,7 @@ export default {
     },
     postData (mode) {
       // Send data to backend here, example, just console it
-      let data = this.$store.getters.GET_QUESTIONNAIRE
+      let data = this.$store.getters.questionnaires
       console.log('TCL: postData -> postData', data)
       if (mode === 'cpl') {
         this.$store.dispatch('MUTATE_QUESTIONNAIRE_COMPLETE')
