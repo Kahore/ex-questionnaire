@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">60% </span>
+        <span class="strong">72.22% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>6/10</span>
+        <span class='fraction'>13/18</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>3/6</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">60% </span>
+        <span class="strong">72.22% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>6/10</span>
+        <span class='fraction'>13/18</span>
       </div>
     </div>
   </div>
@@ -154,7 +154,22 @@
 109
 110
 111
-112</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -179,6 +194,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -219,10 +237,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -274,14 +304,16 @@
           v-for="(rating, index) in scores"
           :key="index"
           :class="{'is-selected': ((temp_value &gt;= rating) &amp;&amp; temp_value != null)}"
-          @click="set(rating)"
+&nbsp;
           @mouseover="starOver(rating)"
           @mouseout="starOut"&gt;
           &lt;input
             class="star-rating star-rating__checkbox"
+            name="starRating"
             type="radio"
             :value="rating"
-            v-model="responses"/&gt;★
+            @click="setRating(rating)"
+           /&gt;★
         &lt;/label&gt;
         &lt;/div&gt;
 &nbsp;
@@ -290,6 +322,7 @@
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
+import EventBus from '../../EventBus'
 export default {
   props: {
     label: {
@@ -329,11 +362,23 @@ export default {
     /*
      * Set the rating.
      */
-    set (value) {
-      this.temp_value = value
-      let obj = { 'questId': this.questId, 'responses': value }
-      this.$store.dispatch('MUTATE_QUESTIONNAIRE_SINGLE', obj)
-      return this.temp_value
+    setRating (value) {
+<span class="missing-if-branch" title="else path not taken" >E</span>      if (typeof value !== 'undefined') {
+        this.temp_value = value
+        let obj = { 'questId': this.questId, 'responses': value }
+        this.$store.dispatch('MUTATE_QUESTIONNAIRE_SINGLE', obj)
+<span class="missing-if-branch" title="else path not taken" >E</span>        if (value !== 10) {
+          this.$store.dispatch('MUTATE_QUESTIONNAIRE_DETAILS')
+          this.$store.dispatch('MUTATE_QUESTIONNAIRE_INDEX', 0)
+        } else {
+<span class="cstat-no" title="statement not covered" >          EventBus.$emit('REDIRECT_QUESTIONNAIRE_INDEX_NEXT')</span>
+        }
+        let hasScore = this.$store.getters.hasScore
+<span class="missing-if-branch" title="else path not taken" >E</span>        if (!hasScore) {
+          this.$store.dispatch('MUTATE_QUESTIONNAIRE_SCORE')
+        }
+      // return this.temp_value
+      }
     }
   },
   mounted () {
@@ -382,7 +427,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 04 2019 15:10:09 GMT+0700 (GMT+07:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Sep 08 2019 11:45:45 GMT+0700 (GMT+07:00)
 </div>
 </div>
 <script src="..\..\..\prettify.js"></script>

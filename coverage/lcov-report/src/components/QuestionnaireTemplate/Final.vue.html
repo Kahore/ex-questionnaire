@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/components/QuestionnaireTemplate/SelectMulti.vue</title>
+    <title>Code coverage report for src/components/QuestionnaireTemplate/Final.vue</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="..\..\..\prettify.css" />
     <link rel="stylesheet" href="..\..\..\base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="..\..\..\index.html">All files</a> / <a href="index.html">src/components/QuestionnaireTemplate</a> SelectMulti.vue
+      <a href="..\..\..\index.html">All files</a> / <a href="index.html">src/components/QuestionnaireTemplate</a> Final.vue
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>6/6</span>
+        <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,16 +32,16 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/1</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>6/6</span>
+        <span class='fraction'>0/2</span>
       </div>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -77,26 +77,7 @@
 32
 33
 34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+35</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -120,31 +101,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -152,17 +114,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
   &lt;div&gt;
     &lt;h3&gt;{{ label }}&lt;/h3&gt;
-    &lt;div
-      v-for="(resp, id) in responses"
-      :key="id"
-      class="responses"&gt;
-      &lt;input
-        type="checkbox"
-        :checked="resp.isSelected"
-        :id=resp.id
-        @click="checkboxAction(resp.id)"&gt;
-      &lt;label :for=resp.id&gt;{{resp.text}}&lt;/label&gt;
-    &lt;/div&gt;
+    &lt;button
+        v-if="hasScore"
+        @click="postData()"&gt;
+        submit
+      &lt;/button&gt;
+      &lt;template v-else&gt;
+        &lt;p&gt;To continue please set a score! it's important to us!&lt;/p&gt;
+      &lt;/template&gt;
   &lt;/div&gt;
 &lt;/template&gt;
 &nbsp;
@@ -172,36 +131,20 @@ export default {
     label: {
       type: String,
       default: ''
-    },
-    responses: {
-      type: [String, Array],
-      default: ''
-    },
-    questId: {
-      type: String,
-      default: ''
+    }
+  },
+  computed: {
+    hasScore () {
+<span class="cstat-no" title="statement not covered" >      return this.$store.getters.hasScore</span>
     }
   },
   methods: {
-    checkboxAction (respId) {
-      let newResp = JSON.parse(JSON.stringify(this.responses))
-      let questIdx = newResp.findIndex(function (resp) {
-        return resp.id === respId
-      })
-      newResp[questIdx].isSelected = !newResp[questIdx].isSelected
-      let obj = { 'questId': this.questId, 'responses': newResp }
-      this.$store.dispatch('MUTATE_QUESTIONNAIRE_SINGLE', obj)
+    postData () {
+<span class="cstat-no" title="statement not covered" >      console.log('TCL: postData -&gt; postData')</span>
     }
   }
 }
 &lt;/script&gt;
-&nbsp;
-&lt;style lang="scss" scoped&gt;
-.responses {
-  text-align: left;
-  margin-left: 15%
-}
-&lt;/style&gt;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
